@@ -1,0 +1,16 @@
+package views
+
+import (
+	"ssr-go/client"
+	"ssr-go/components/product-list"
+)
+
+var products = client.GetProducts()
+
+templ Home() {
+	<div>
+		<h1>Home</h1>
+		<p>Home page</p>
+		@components.ProductList(products)
+	</div>
+}

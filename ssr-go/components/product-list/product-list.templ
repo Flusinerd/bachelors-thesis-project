@@ -1,0 +1,17 @@
+package components
+
+import "api/models"
+import "fmt"
+
+templ ProductList(products []models.Product) {
+	<ul class="products">
+		for _, product := range products {
+			<li class="product-card">
+				<h3>{ product.Name }</h3>
+				<img class="product-preview" src="/public/images/preview.svg" alt="Product preview"/>
+				<p class="product-description">{ product.Description }</p>
+				<p class="product-price">${ fmt.Sprintf("%.2f", product.Price) }</p>
+			</li>
+		}
+	</ul>
+}
