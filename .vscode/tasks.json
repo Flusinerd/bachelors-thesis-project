@@ -14,5 +14,36 @@
         "$go"
       ]
     },
+    {
+      "label": "SSR - Go Build Templates",
+      "type": "shell",
+      "command": "templ generate",
+      "options": {
+        "cwd": "${workspaceFolder}/ssr-go"
+      },
+      "problemMatcher": [
+        "$go"
+      ],
+      "runOptions": {
+        "instanceLimit": 1
+      }
+    },
+    {
+      "label": "SSR - Go Run",
+      "type": "shell",
+      "command": "gow -c run cmd/server/main.go",
+      "options": {
+        "cwd": "${workspaceFolder}/ssr-go"
+      },
+      "problemMatcher": [
+        "$go"
+      ],
+      "dependsOn": [
+        "SSR - Go Build Templates"
+      ],
+      "runOptions": {
+        "instanceLimit": 1
+      }
+    }
   ]
 }

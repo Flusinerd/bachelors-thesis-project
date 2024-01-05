@@ -13,7 +13,8 @@
 				"ms-azuretools.vscode-docker",
 				"esbenp.prettier-vscode",
 				"mtxr.sqltools",
-				"mtxr.sqltools-driver-pg"
+				"mtxr.sqltools-driver-pg",
+				"a-h.templ"
 			]
 		}
 	},
