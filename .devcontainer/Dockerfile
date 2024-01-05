@@ -13,3 +13,7 @@ FROM mcr.microsoft.com/devcontainers/go:1-1.21-bullseye
 USER root
 RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
 RUN apt-get install -y nodejs
+
+USER vscode
+# Install gow
+RUN go install github.com/mitranim/gow@latest
