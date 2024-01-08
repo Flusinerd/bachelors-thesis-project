@@ -42,6 +42,10 @@ func (c *CustomerState) RemoveProduct(id string, product models.Product) {
 	}
 }
 
+func (c *CustomerState) GetCart(customerId string) []models.Product {
+	return c.Customers[customerId].Cart
+}
+
 func removeProduct(products []models.Product, product models.Product) []models.Product {
 	for i, p := range products {
 		if p.Id == product.Id {

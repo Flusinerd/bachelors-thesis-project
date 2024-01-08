@@ -1,5 +1,5 @@
 body {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   background-color: #f8f9fa;
 }
 
@@ -92,4 +92,139 @@ nav {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+}
+
+.alert {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 0.25rem;
+
+  animation: alert-enter 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.alert-success {
+  background-color: #d1e7dd;
+  border-color: #badbcc;
+  color: #0f5132;
+}
+
+.alert-danger {
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+  color: #842029;
+}
+
+.alert.leave {
+  animation: alert-leave 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cart {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+
+@keyframes cart-open {
+  from {
+    transform: translateX(150%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes cart-close {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(150%);
+  }
+}
+
+.cart-container.hidden {
+  visibility: hidden;
+}
+
+.cart-container.leave {
+  animation: cart-close 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards !important;
+}
+
+.cart-container {
+  position: absolute;
+
+  top: 100%;
+  width: max-content;
+
+  &:not(.hidden) {
+    animation: cart-open 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+    margin-top: 0.5rem;
+    list-style: none;
+
+    border: 1px solid #dee2e6;
+    border-radius: 0.25rem;
+
+    background: #fff;
+
+    li {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+
+      border-bottom: 1px solid #dee2e6;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      .product-name {
+        margin: 0;
+      }
+
+      .product-price {
+        margin: 0;
+      }
+    }
+  }
+}
+
+@keyframes alert-enter {
+  from {
+    transform: translateX(-50%) translateY(300%);
+  }
+  to {
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+@keyframes alert-leave {
+  from {
+    transform: translateX(-50%) translateY(0);
+  }
+  to {
+    transform: translateX(-50%) translateY(300%);
+  }
 }

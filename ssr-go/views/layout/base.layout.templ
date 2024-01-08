@@ -1,8 +1,11 @@
 package layout
 
-import "ssr-go/components/nav"
+import (
+	"ssr-go/components/nav"
+	"api/models"
+)
 
-templ Base(title string, component templ.Component) {
+templ Base(title string, component templ.Component, alert templ.Component, cartProducts *[]models.Product) {
 	<!DOCTYPE html>
 	<html lang="en">
 		<head>
@@ -12,10 +15,13 @@ templ Base(title string, component templ.Component) {
 			<link rel="stylesheet" href="/public/css/styles.css"/>
 		</head>
 		<body>
-			@navComponent.Nav()
+			@navComponent.Nav(cartProducts)
 			<main>
 				@component
 			</main>
+			if alert != nil {
+				@alert
+			}
 		</body>
 	</html>
 }

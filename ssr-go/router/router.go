@@ -12,6 +12,7 @@ import (
 func ConfigureRoutes(server *s.Server) {
 	homeHandler := home_handler.NewHomeHandler()
 	cartHandler := cart_handler.NewCartHandler(server)
+	productHandler := product_handler.NewProductHandler(server)
 
 	server.Echo.Use(middleware.Logger())
 	server.Echo.Use(middleware.Recover())
@@ -19,6 +20,6 @@ func ConfigureRoutes(server *s.Server) {
 	r := server.Echo.Group("")
 	r.Static("/public", "public")
 	r.GET("/", homeHandler.Handle)
-	r.GET("/products/:id", product_handler.Handle)
+	r.GET("/products/:id", productHandler.Handle)
 	r.POST("/cart", cartHandler.AddToCart)
 }

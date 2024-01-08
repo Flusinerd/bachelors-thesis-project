@@ -1,0 +1,37 @@
+package cart
+
+import "api/models"
+
+templ CartComponent(products *[]models.Product) {
+	<div class="cart">
+		<button class="cart-button" id="cart-button">Cart</button>
+		<div class="cart-container hidden" id="cart-container">
+			<ul>
+				if products != nil {
+					for _, product := range *products {
+						<li>{ product.Name }</li>
+					}
+				}
+			</ul>
+		</div>
+	</div>
+	<script>
+		const cartButton = document.getElementById('cart-button');
+		const cartContainer = document.getElementById('cart-container');
+		let cartOpen = cartContainer.classList.contains('hidden');
+
+		cartButton.addEventListener('click', () => {
+			if (cartOpen) {
+				cartContainer.classList.remove('hidden');
+				cartOpen = false;
+			} else {
+				cartContainer.classList.add('leave')
+				setTimeout(() => {
+					cartContainer.classList.add('hidden');
+					cartContainer.classList.remove('leave');
+					cartOpen = true;
+				}, 500);
+			}
+		});
+	</script>
+}

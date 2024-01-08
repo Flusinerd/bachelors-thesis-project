@@ -18,5 +18,5 @@ func NewHomeHandler() *HomeHandler {
 
 func (h *HomeHandler) Handle(c echo.Context) error {
 	products := client.GetProducts()
-	return utils.RenderView(c, layout.Base("Home", views.Home(products)))
+	return utils.RenderView(c, layout.Base("Home", views.Home(products), nil, nil))
 }
