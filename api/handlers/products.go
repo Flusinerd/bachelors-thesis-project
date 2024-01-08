@@ -17,6 +17,7 @@ type productHandler struct {
 
 type ProductHandler interface {
 	GetProducts(c echo.Context) error
+	GetProduct(c echo.Context) error
 }
 
 func NewProductHandler(server *s.Server) ProductHandler {
@@ -38,4 +39,19 @@ func (handler *productHandler) GetProducts(c echo.Context) error {
 	}
 
 	return c.JSON(200, products)
+}
+
+func (handler *productHandler) GetProduct(c echo.Context) error {
+	id := c.Param("id")
+	product, err := utils.TimeoutWrapper(
+		func() interface{} { return handler.productsRepository.GetProductById(id) },
+		1*time.Second,
+		handler.config,
+	)
+
+	if err != nil {
+		panic(err)
+	}
+
+	return c.JSON(200, product)
 }

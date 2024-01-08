@@ -1,14 +1,17 @@
 package router
 
 import (
-	"ssr-go/handlers"
+	cart_handler "ssr-go/handlers/cart"
+	"ssr-go/handlers/home_handler"
+	"ssr-go/handlers/product_handler"
 	s "ssr-go/server"
 
 	"github.com/labstack/echo/v4/middleware"
 )
 
 func ConfigureRoutes(server *s.Server) {
-	homeHandler := handlers.NewHomeHandler()
+	homeHandler := home_handler.NewHomeHandler()
+	cartHandler := cart_handler.NewCartHandler(server)
 
 	server.Echo.Use(middleware.Logger())
 	server.Echo.Use(middleware.Recover())
@@ -16,5 +19,6 @@ func ConfigureRoutes(server *s.Server) {
 	r := server.Echo.Group("")
 	r.Static("/public", "public")
 	r.GET("/", homeHandler.Handle)
-
+	r.GET("/products/:id", product_handler.Handle)
+	r.POST("/cart", cartHandler.AddToCart)
 }

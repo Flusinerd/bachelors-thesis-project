@@ -1,6 +1,7 @@
 package main
 
 import (
+	"ssr-go/middleware"
 	"ssr-go/router"
 	"ssr-go/server"
 
@@ -14,6 +15,7 @@ func main() {
 	}
 
 	server := server.NewServer()
+	server.Echo.Use(middleware.CustomerIdMiddleware)
 	router.ConfigureRoutes(server)
 
 	server.Start()

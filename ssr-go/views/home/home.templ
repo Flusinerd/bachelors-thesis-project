@@ -1,13 +1,11 @@
 package views
 
 import (
-	"ssr-go/client"
 	"ssr-go/components/product-list"
+	"api/models"
 )
 
-var products = client.GetProducts()
-
-templ Home() {
+templ Home(products []models.Product) {
 	<div>
 		<h1>Home</h1>
 		<p>Home page</p>

@@ -3,6 +3,7 @@ package utils
 import (
 	c "api/config"
 	"fmt"
+	"math"
 	"time"
 )
 
@@ -10,8 +11,8 @@ func TimeoutWrapper(originalFunc func() interface{}, duration time.Duration, con
 	startTime := time.Now()
 	resultChannel := make(chan interface{})
 	errChannel := make(chan error)
-	timeFactor := int64(config.Server.ResponseDelayFactor)
-	durationWithFactor := time.Duration(duration.Nanoseconds() * timeFactor)
+	timeFactor := config.Server.ResponseDelayFactor
+	durationWithFactor := time.Duration(math.Round(float64(duration.Nanoseconds()) * timeFactor))
 
 	go func() {
 		result := originalFunc()

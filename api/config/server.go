@@ -7,7 +7,7 @@ import (
 
 type ServerConfig struct {
 	Port                int
-	ResponseDelayFactor int
+	ResponseDelayFactor float64
 }
 
 func LoadServerConfig() ServerConfig {
@@ -27,7 +27,7 @@ func LoadServerConfig() ServerConfig {
 		responseDelayFactor = "1"
 	}
 
-	responseDelayFactorInt, err := strconv.Atoi(responseDelayFactor)
+	responseDelayFactorFloat, err := strconv.ParseFloat(responseDelayFactor, 64)
 
 	if err != nil {
 		panic("Error parsing response delay factor")
@@ -35,6 +35,6 @@ func LoadServerConfig() ServerConfig {
 
 	return ServerConfig{
 		Port:                portInt,
-		ResponseDelayFactor: responseDelayFactorInt,
+		ResponseDelayFactor: responseDelayFactorFloat,
 	}
 }

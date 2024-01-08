@@ -15,4 +15,5 @@ func ConfigureRoutes(server *s.Server) {
 
 	r := server.Echo.Group("/api")
 	r.GET("/products", productsHandler.GetProducts)
+	r.GET("/products/:id", productsHandler.GetProduct)
 }
