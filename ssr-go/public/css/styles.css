@@ -164,6 +164,23 @@ nav {
   animation: cart-close 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards !important;
 }
 
+.cart-button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid #dee2e6;
+  border-radius: 0.25rem;
+  background-color: #fff;
+
+  cursor: pointer;
+
+  &:hover {
+    background-color: #f8f9fa;
+  }
+}
+
 .cart-container {
   position: absolute;
 

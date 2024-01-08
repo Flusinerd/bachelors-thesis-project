@@ -1,10 +1,14 @@
 package cart
 
 import "api/models"
+import "fmt"
 
 templ CartComponent(products *[]models.Product) {
 	<div class="cart">
-		<button class="cart-button" id="cart-button">Cart</button>
+		<button class="cart-button" id="cart-button">
+			<img src="/public/icons/shopping-bag.svg" alt="Cart"/>
+			<span class="cart-count">{ fmt.Sprintf("%d Item(s) in Cart", len(*products)) }</span>
+		</button>
 		<div class="cart-container hidden" id="cart-container">
 			<ul>
 				if products != nil {
