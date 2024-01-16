@@ -12,6 +12,7 @@ func ConfigureRoutes(server *s.Server) {
 
 	server.Echo.Use(middleware.Logger())
 	server.Echo.Use(middleware.Recover())
+	server.Echo.Use(middleware.CORS())
 
 	r := server.Echo.Group("/api")
 	r.GET("/products", productsHandler.GetProducts)

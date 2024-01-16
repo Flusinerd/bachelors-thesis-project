@@ -30,7 +30,7 @@ func NewProductHandler(server *s.Server) ProductHandler {
 func (handler *productHandler) GetProducts(c echo.Context) error {
 	products, err := utils.TimeoutWrapper(
 		func() interface{} { return handler.productsRepository.GetProducts() },
-		1*time.Second,
+		500*time.Millisecond,
 		handler.config,
 	)
 
@@ -45,7 +45,7 @@ func (handler *productHandler) GetProduct(c echo.Context) error {
 	id := c.Param("id")
 	product, err := utils.TimeoutWrapper(
 		func() interface{} { return handler.productsRepository.GetProductById(id) },
-		1*time.Second,
+		100*time.Millisecond,
 		handler.config,
 	)
 

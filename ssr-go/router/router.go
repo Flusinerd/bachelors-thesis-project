@@ -15,7 +15,7 @@ func ConfigureRoutes(server *s.Server) {
 	productHandler := product_handler.NewProductHandler(server)
 
 	server.Echo.Use(middleware.Logger())
-	server.Echo.Use(middleware.Recover())
+	// server.Echo.Use(middleware.Recover())
 
 	r := server.Echo.Group("")
 	r.Static("/public", "public")

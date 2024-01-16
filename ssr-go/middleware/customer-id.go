@@ -16,7 +16,9 @@ func CustomerIdMiddleware(next echo.HandlerFunc) echo.HandlerFunc {
 
 		existingHeader, err := c.Cookie("X-Customer-Id")
 		if err != nil {
-			return err
+			if err != http.ErrNoCookie {
+				return err
+			}
 		}
 
 		if existingHeader != nil {

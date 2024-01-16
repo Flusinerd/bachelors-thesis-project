@@ -15,9 +15,9 @@
       ]
     },
     {
-      "label": "SSR - Go Build Templates",
+      "label": "SSR - Go Watch Templates",
       "type": "shell",
-      "command": "templ generate",
+      "command": "gow -e=templ -c run build-templates.go",
       "options": {
         "cwd": "${workspaceFolder}/ssr-go"
       },

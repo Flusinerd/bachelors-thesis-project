@@ -18,3 +18,6 @@ USER vscode
 # Install gow
 RUN go install github.com/mitranim/gow@latest
 RUN go install github.com/a-h/templ/cmd/templ@latest
+
+# Install dependencies in csr
+RUN cd ./csr && npm install

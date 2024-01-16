@@ -1,6 +1,9 @@
 package repositories
 
-import "api/models"
+import (
+	"api/models"
+	"sort"
+)
 
 type productsRepository struct {
 	products map[string]models.Product
@@ -20,6 +23,10 @@ func (repo *productsRepository) GetProducts() []models.Product {
 	for _, product := range repo.products {
 		slice = append(slice, product)
 	}
+
+	sort.Slice(slice, func(i, j int) bool {
+		return slice[i].Id < slice[j].Id
+	})
 
 	return slice
 }
