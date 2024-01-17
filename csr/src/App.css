@@ -250,6 +250,10 @@ nav {
   }
 }
 
+.add-to-cart-btn {
+  width: fit-content;
+}
+
 @keyframes alert-enter {
   from {
     transform: translateX(-50%) translateY(300%);

@@ -19,5 +19,13 @@ USER vscode
 RUN go install github.com/mitranim/gow@latest
 RUN go install github.com/a-h/templ/cmd/templ@latest
 
-# Install dependencies in csr
-RUN cd ./csr && npm install
+# Install lighthouse
+USER root
+RUN npm install -g lighthouse
+
+# Install Chrome
+RUN curl -sSL https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -o /tmp/chrome.deb
+RUN apt-get install -y /tmp/chrome.deb
+RUN rm /tmp/chrome.deb
+
+USER vscode

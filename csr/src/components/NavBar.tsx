@@ -1,3 +1,5 @@
+import Cart from './Cart'
+
 export default function NavBar() {
   return (
     <div className='page-header'>
@@ -12,6 +14,7 @@ export default function NavBar() {
           </li>
         </ul>
       </nav>
+      <Cart />
     </div>
   )
 }

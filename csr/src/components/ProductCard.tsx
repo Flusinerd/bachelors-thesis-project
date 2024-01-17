@@ -15,9 +15,9 @@ export default function ProductCard({ product }: ProductCardProps) {
 
   return (
     <li>
-      <a className='product-card'>
+      <a className='product-card' href={`/products/${product.id}`}>
         <h3>{product.name}</h3>
-        <img className='product-preview' src='/public/images/preview.svg'></img>
+        <img className='product-preview' src='/images/preview.svg'></img>
         <p className='product-description'>{product.description}</p>
         <p className='product-price'>{formatedPrice}</p>
       </a>

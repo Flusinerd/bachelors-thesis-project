@@ -3,6 +3,9 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import App from './App.tsx'
 import './index.css'
 import Home from './pages/Home.tsx'
+import ProductDetailPage, {
+  loader as ProductDetailsLoader,
+} from './pages/ProductDetail.tsx'
 
 const router = createBrowserRouter([
   {
@@ -15,7 +18,8 @@ const router = createBrowserRouter([
       },
       {
         path: 'products/:productId',
-        element: <div>Product</div>,
+        element: <ProductDetailPage />,
+        loader: ProductDetailsLoader,
       },
     ],
   },
