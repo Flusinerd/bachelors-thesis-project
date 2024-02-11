@@ -6,9 +6,5 @@ import (
 )
 
 templ Home(products []models.Product) {
-	<div>
-		<h1>Home</h1>
-		<p>Home page</p>
-		@components.ProductList(products)
-	</div>
+	@components.ProductList(products)
 }
