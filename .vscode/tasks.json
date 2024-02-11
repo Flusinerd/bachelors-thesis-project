@@ -44,6 +44,34 @@
       "runOptions": {
         "instanceLimit": 1
       }
+    },
+    {
+      "label": "CSR - Run Dev",
+      "type": "shell",
+      "command": "npm run dev",
+      "options": {
+        "cwd": "${workspaceFolder}/csr"
+      },
+      "problemMatcher": [
+        "$tsc"
+      ],
+      "runOptions": {
+        "instanceLimit": 1
+      }
+    }
+    {
+      "label": "SSG - Run Dev",
+      "type": "shell",
+      "command": "npm run dev",
+      "options": {
+        "cwd": "${workspaceFolder}/ssg"
+      },
+      "problemMatcher": [
+        "$tsc"
+      ],
+      "runOptions": {
+        "instanceLimit": 1
+      }
     }
   ]
 }
