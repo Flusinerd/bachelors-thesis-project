@@ -1,0 +1,59 @@
+package cart
+
+import "api/models"
+import "fmt"
+
+templ CartComponent(products *[]models.Product) {
+	<div class="cart">
+		<button class="cart-button" id="cart-button">
+			<img src="/public/icons/shopping-bag.svg" alt="Cart"/>
+			if products != nil {
+				<span class="cart-count">{ fmt.Sprintf("%d Item(s) in Cart", len(*products)) }</span>
+			} else {
+				<span class="cart-count">0 Items in Cart</span>
+			}
+		</button>
+		if products != nil && len(*products) > 0 {
+			<div class="cart-container hidden" id="cart-container">
+				<ul>
+					for _, product := range *products {
+						<li>
+							<div class="cart-item">
+								<span>{ product.Name }</span>
+								<button class="icon-button" type="button">
+									<img src="/public/icons/trash.svg" alt="Remove"/>
+								</button>
+							</div>
+						</li>
+					}
+					<button class="icon-button" style="gap: 1rem; padding: 1rem; background: #3880ff; color: #fff">
+						<img src="/public/icons/shopping-cart.svg" alt="" style="filter: invert(100%)"/>
+						<span>Checkout</span>
+					</button>
+				</ul>
+			</div>
+		}
+	</div>
+	<script>
+		const cartButton = document.getElementById('cart-button');
+
+
+		cartButton.addEventListener('click', () => {
+			const cartContainer = document.getElementById('cart-container');
+			if (!cartContainer) {
+				return;
+			}
+
+			const cartOpen = cartContainer.classList.contains('hidden');
+			if (cartOpen) {
+				cartContainer.classList.remove('hidden');
+			} else {
+				cartContainer.classList.add('leave')
+				setTimeout(() => {
+					cartContainer.classList.add('hidden');
+					cartContainer.classList.remove('leave');
+				}, 500);
+			}
+		});
+	</script>
+}

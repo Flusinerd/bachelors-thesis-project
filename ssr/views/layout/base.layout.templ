@@ -1,0 +1,27 @@
+package layout
+
+import (
+	"ssr-go/components/nav"
+	"api/models"
+)
+
+templ Base(title string, component templ.Component, alert templ.Component, cartProducts *[]models.Product) {
+	<!DOCTYPE html>
+	<html lang="en">
+		<head>
+			<title>{ title }</title>
+			<meta charset="utf-8"/>
+			<meta name="viewport" content="width=device-width, initial-scale=1"/>
+			<link rel="stylesheet" href="/public/css/styles.css"/>
+		</head>
+		<body>
+			@navComponent.Nav(cartProducts)
+			<main>
+				@component
+			</main>
+			if alert != nil {
+				@alert
+			}
+		</body>
+	</html>
+}

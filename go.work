@@ -3,5 +3,5 @@ go 1.21.5
 use (
 	./api
 	./request-duration-logger
-	./ssr-go
+	./ssr
 )

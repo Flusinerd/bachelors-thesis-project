@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import Cart from './Cart'
 
 export default function NavBar() {
@@ -7,10 +8,10 @@ export default function NavBar() {
         <ul>
           <h1>Product Store</h1>
           <li>
-            <a href='/'>Home</a>
+            <Link href='/'>Home</Link>
           </li>
           <li>
-            <a href='/about'>About</a>
+            <Link href='/about'>About</Link>
           </li>
         </ul>
       </nav>

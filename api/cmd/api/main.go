@@ -4,6 +4,7 @@ import (
 	"api/config"
 	"api/router"
 	"api/server"
+	"log"
 
 	"github.com/joho/godotenv"
 )
@@ -11,7 +12,9 @@ import (
 func main() {
 	err := godotenv.Load()
 	if err != nil {
-		panic(err)
+		// Can't load .env file
+		// Continue without it
+		log.Println("Can't load .env file")
 	}
 
 	config := config.LoadConfig()

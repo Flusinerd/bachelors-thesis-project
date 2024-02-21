@@ -19,7 +19,7 @@
       "type": "shell",
       "command": "gow -e=templ -c run build-templates.go",
       "options": {
-        "cwd": "${workspaceFolder}/ssr-go"
+        "cwd": "${workspaceFolder}/ssr"
       },
       "problemMatcher": [
         "$go"
@@ -33,7 +33,7 @@
       "type": "shell",
       "command": "gow -c run cmd/server/main.go",
       "options": {
-        "cwd": "${workspaceFolder}/ssr-go"
+        "cwd": "${workspaceFolder}/ssr"
       },
       "problemMatcher": [
         "$go"
@@ -58,7 +58,7 @@
       "runOptions": {
         "instanceLimit": 1
       }
-    }
+    },
     {
       "label": "SSG - Run Dev",
       "type": "shell",

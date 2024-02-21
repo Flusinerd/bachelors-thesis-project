@@ -1,0 +1,27 @@
+package alert
+
+const (
+	Success = "success"
+	Danger  = "danger"
+)
+
+templ AlertComponent(message string, level string) {
+	<script>
+	  const existingAlert = document.getElementById("alert");
+		if(existingAlert) {
+			existingAlert.remove();
+		}
+	</script>
+	<div class={ "alert " + "alert-" + level } id="alert">
+		<span>{ message }</span>
+	</div>
+	<script>
+		const alert = document.getElementById("alert");
+		setTimeout(() => {
+			alert.classList.add("leave");
+		}, 3000);
+		setTimeout(() => {
+			alert.remove();
+		}, 5000);
+	</script>
+}

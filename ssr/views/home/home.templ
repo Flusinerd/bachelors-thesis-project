@@ -1,0 +1,10 @@
+package views
+
+import (
+	"ssr-go/components/product-list"
+	"api/models"
+)
+
+templ Home(products []models.Product) {
+	@components.ProductList(products)
+}

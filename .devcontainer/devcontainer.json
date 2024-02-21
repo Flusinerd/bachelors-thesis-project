@@ -18,5 +18,17 @@
       ]
     }
   },
-  "forwardPorts": [3000, 8080, 3001, 3002]
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker": {
+      "version": "20.10",
+      "moby": true,
+      "dockerDashComposeVersion": "v1"
+    }
+  },
+  "forwardPorts": [
+    3000,
+    8080,
+    3001,
+    3002
+  ],
 }

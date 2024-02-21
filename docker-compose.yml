@@ -1,0 +1,41 @@
+version: '3'
+
+services:
+  api:
+    image: bachelor-thesis-api
+    env_file:
+      - api.env
+    ports:
+      - "8080:80"
+
+  csr:
+    image: bachelor-thesis-csr
+    depends_on:
+      - api
+    ports:
+      - "3002:80"
+
+  isr:
+    image: bachelor-thesis-isr
+    depends_on:
+      - api
+    env_file:
+      - isr.env
+    ports:
+      - "3001:80"
+
+  ssg:
+    image: bachelor-thesis-ssg
+    depends_on:
+      - api
+    ports:
+      - "3000:80"
+
+  ssr:
+    image: bachelor-thesis-ssr
+    depends_on:
+      - api
+    env_file:
+      - ssr.env
+    ports:
+      - "3003:80"
